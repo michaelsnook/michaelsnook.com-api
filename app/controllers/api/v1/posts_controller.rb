@@ -32,7 +32,7 @@ class Api::V1::PostsController < ApplicationController
     params.permit(:name, :title, :excerpt, :content, :image)
   end
 
-  def recipe
-    @recipe ||= Recipe.find(params[:id])
+  def post
+    @post ||= Post.find(params[:id])
   end
 end
