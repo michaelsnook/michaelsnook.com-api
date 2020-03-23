@@ -28,7 +28,7 @@ class Api::V1::PostsController < ApplicationController
 
   private
 
-  def recipe_params
+  def post_params
     params.permit(:name, :title, :excerpt, :content, :image)
   end
 
