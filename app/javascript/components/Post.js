@@ -11,6 +11,7 @@ class Post extends React.Component {
     };
 
     this.addHtmlEntities = this.addHtmlEntities.bind(this);
+    this.deleteRecipe = this.deleteRecipe.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +40,32 @@ class Post extends React.Component {
       .replace(/&gt;/g, '>');
   }
 
+  deleteRecipe() {
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+    const url = `/api/v1/posts/destroy/${id}`;
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "X-CSRF-Token": token,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then(() => this.props.history.push("/posts"))
+      .catch(error => console.log(error.message));
+  }
+
   render() {
     const { post } = this.state;
 
@@ -62,7 +89,7 @@ class Post extends React.Component {
               <button type="button" className="btn btn-outline-primary">
                 Edit Post
               </button>
-              <button type="button" className="btn ml-sm-2 btn-outline-danger">
+              <button type="button" className="btn ml-sm-2 btn-outline-danger" onClick={this.deleteRecipe}>
                 Delete Post
               </button>
             </div>
