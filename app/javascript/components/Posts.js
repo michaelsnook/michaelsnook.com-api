@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Posts extends React.Component {
   constructor(props) {
@@ -10,16 +10,16 @@ class Posts extends React.Component {
   }
 
   componentDidMount() {
-    const url = "/api/v1/posts/index";
+    const url = '/api/v1/posts/index';
     fetch(url)
       .then(response => {
         if (response.ok) {
           return response.json();
         }
-        throw new Error("Network response was not ok.");
+        throw new Error('Network response was not ok.');
       })
       .then(response => this.setState({ posts: response }))
-      .catch(() => this.props.history.push("/"));
+      .catch(() => this.props.history.push('/'));
   }
 
   render() {
