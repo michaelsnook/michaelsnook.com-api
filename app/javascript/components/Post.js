@@ -11,7 +11,7 @@ class Post extends React.Component {
     };
 
     this.addHtmlEntities = this.addHtmlEntities.bind(this);
-    this.deleteRecipe = this.deleteRecipe.bind(this);
+    this.deletePost = this.deletePost.bind(this);
   }
 
   componentDidMount() {
@@ -40,7 +40,7 @@ class Post extends React.Component {
       .replace(/&gt;/g, '>');
   }
 
-  deleteRecipe() {
+  deletePost() {
     const {
       match: {
         params: { id }
@@ -89,7 +89,7 @@ class Post extends React.Component {
               <button type="button" className="btn btn-outline-primary">
                 Edit Post
               </button>
-              <button type="button" className="btn ml-sm-2 btn-outline-danger" onClick={this.deleteRecipe}>
+              <button type="button" className="btn ml-sm-2 btn-outline-danger" onClick={this.deletePost}>
                 Delete Post
               </button>
             </div>
