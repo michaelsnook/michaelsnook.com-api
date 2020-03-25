@@ -44,7 +44,7 @@ class Posts extends React.Component {
     const noPosts = (
       <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
         <h4>
-          No posts yet. Why not <Link to="/post/new">create one</Link>
+          No posts yet. Why not <Link to="/posts/new">create one</Link>
         </h4>
       </div>
     );
@@ -64,7 +64,7 @@ class Posts extends React.Component {
         <div className="py-5">
           <main className="container">
             <div className="text-right mb-3">
-              <Link to="/post/new" className="btn btn-secondary">
+              <Link to="/posts/new" className="btn btn-secondary">
                 Create New Post
               </Link>
             </div>

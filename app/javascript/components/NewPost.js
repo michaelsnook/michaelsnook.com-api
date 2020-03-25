@@ -84,9 +84,9 @@ class NewPost extends React.Component {
               </div>
               <div className="form-group">
                 <label htmlFor="postName">Post URL e.g "post-title-slug"</label>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">/post/</span>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text">/post/</span>
                   </div>
                   <input
                     type="text"
