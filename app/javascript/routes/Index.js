@@ -10,8 +10,8 @@ export default (
     <Switch>
       <Route path='/' exact component={Home} />
       <Route path='/posts' exact component={Posts} />
-      <Route path='/post/:id' exact component={Post} />
       <Route path='/posts/new' exact component={NewPost} />
+      <Route path='/posts/:id(\d+)' exact component={Post} />
     </Switch>
   </Router>
 );

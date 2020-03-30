@@ -59,7 +59,7 @@ class NewPost extends React.Component {
         }
         throw new Error('Network response was not ok.');
       })
-      .then(response => this.props.history.push(`/post/${response.id}`))
+      .then(response => this.props.history.push(`/posts/${response.id}`))
       .catch(error => console.log(error.message));
   }
 
@@ -86,7 +86,7 @@ class NewPost extends React.Component {
                 <label htmlFor="postName">Post URL e.g "post-title-slug"</label>
                 <div className="input-group mb-3">
                   <div className="input-group-prepend">
-                    <span className="input-group-text">/post/</span>
+                    <span className="input-group-text">/posts/</span>
                   </div>
                   <input
                     type="text"

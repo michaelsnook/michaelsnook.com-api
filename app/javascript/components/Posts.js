@@ -34,7 +34,7 @@ class Posts extends React.Component {
           />
           <div className="card-body">
             <h5 className="card-title">{post.title}</h5>
-            <Link to={`/post/${post.id}`} className="btn btn-secondary">
+            <Link to={`/posts/${post.id}`} className="btn btn-secondary">
               View Post
             </Link>
           </div>
