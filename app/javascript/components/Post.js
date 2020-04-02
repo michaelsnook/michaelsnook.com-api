@@ -4,8 +4,16 @@ import { Link } from 'react-router-dom';
 class Post extends React.Component {
   constructor(props) {
     super(props);
+
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+
     this.state = {
       post: {
+        id,
         name: ''
       }
     };
@@ -15,13 +23,7 @@ class Post extends React.Component {
   }
 
   componentDidMount() {
-    const {
-      match: {
-        params: { id }
-      }
-    } = this.props;
-
-    const url = `/api/v1/posts/show/${id}`;
+    const url = `/api/v1/posts/show/${this.state.post.id}`;
 
     fetch(url)
       .then(response => {
@@ -41,12 +43,7 @@ class Post extends React.Component {
   }
 
   deletePost() {
-    const {
-      match: {
-        params: { id }
-      }
-    } = this.props;
-    const url = `/api/v1/posts/destroy/${id}`;
+    const url = `/api/v1/posts/destroy/${this.state.post.id}`;
     const token = document.querySelector('meta[name="csrf-token"]').content;
 
     fetch(url, {
