@@ -78,7 +78,8 @@ class UpdatePost extends React.Component {
   }
 
   onChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    const post = {...this.state.post, [event.target.name]: event.target.value };
+    this.setState({ post });
   }
 
   onSubmit(event) {
@@ -118,15 +119,14 @@ class UpdatePost extends React.Component {
   }
 
   render() {
-    const { post } = this.state;
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-4">
             <div className="row">
               <div className="col-12">
-                <h1 className="font-weight-normal mb-5">
-                  Edit your post.
+                <h1 className="font-weight-normal my-3">
+                  Edit your post
                 </h1>
                 <form onSubmit={this.onSubmit}>
                   <div className="form-group">
@@ -137,6 +137,7 @@ class UpdatePost extends React.Component {
                       id="postTitle"
                       className="form-control"
                       onChange={this.onChange}
+                      value={this.state.post.title}
                     />
                   </div>
                   <div className="form-group">
@@ -152,6 +153,7 @@ class UpdatePost extends React.Component {
                         className="form-control"
                         required
                         onChange={this.onChange}
+                        value={this.state.post.name}
                       />
                     </div>
                   </div>
@@ -163,6 +165,7 @@ class UpdatePost extends React.Component {
                       name="excerpt"
                       rows="2"
                       onChange={this.onChange}
+                      value={this.state.post.excerpt}
                     />
                   </div>
                   <div className="form-group">
@@ -173,6 +176,7 @@ class UpdatePost extends React.Component {
                       name="content"
                       rows="5"
                       onChange={this.onChange}
+                      value={this.state.post.content}
                     />
                   </div>
                   <div className="form-group">
@@ -183,6 +187,7 @@ class UpdatePost extends React.Component {
                       id="postImage"
                       className="form-control"
                       onChange={this.onChange}
+                      value={this.state.post.image}
                     />
                   </div>
                   <button type="submit" className="btn btn-primary mt-3">
@@ -196,31 +201,20 @@ class UpdatePost extends React.Component {
             </div>
           </div>
           <div className="col-lg-8">
-            <Banner {...post} />
+            <Banner {...this.state.post} />
 
             <div className="container py-5">
               <div className="row">
-                <div className="col-sm-12 col-lg-3">
-                  <button type="button" className="btn btn-outline-primary">
-                    Edit Post
-                  </button>
-                  <button type="button" className="btn ml-sm-2 btn-outline-danger" onClick={this.deletePost}>
-                    Delete Post
-                  </button>
-                </div>
-                <div className="col-sm-12 col-lg-7 py-sm-3">
+
+                <div className="col-sm-12 col-lg-8 offset-lg-2 col-md-10 offset-md-1 py-sm-3">
                   <h5 className="mb-2">Post content</h5>
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: `${post.content}`
+                      __html: `${this.state.post.content}`
                     }}
                   />
                 </div>
-                <div className="col-sm-12 col-lg-2">
-                  <Link to="/posts" className="btn btn-outline-secondary mr-2 pull-md-left">
-                    « Back to posts
-                  </Link>
-                </div>
+
               </div>
             </div>
           </div>
