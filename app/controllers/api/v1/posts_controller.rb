@@ -21,6 +21,15 @@ class Api::V1::PostsController < ApplicationController
     end
   end
 
+  def update
+    post = post&.update(post_params)
+    if post
+      render json: post
+    else
+      render json: post.errors
+    end
+  end
+
   def destroy
     post&.destroy
     render json: { message: 'Post deleted!' }

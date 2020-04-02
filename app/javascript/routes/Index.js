@@ -4,6 +4,7 @@ import Home from '../components/Home';
 import Posts from '../components/Posts';
 import Post from '../components/Post';
 import NewPost from '../components/NewPost'
+import UpdatePost from '../components/UpdatePost'
 
 export default (
   <Router>
@@ -12,6 +13,7 @@ export default (
       <Route path='/posts' exact component={Posts} />
       <Route path='/posts/new' exact component={NewPost} />
       <Route path='/posts/:id(\d+)' exact component={Post} />
+      <Route path='/posts/:id(\d+)/update' exact component={UpdatePost} />
     </Switch>
   </Router>
 );

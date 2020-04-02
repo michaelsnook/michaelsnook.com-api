@@ -86,9 +86,9 @@ class Post extends React.Component {
         <div className="container py-5">
           <div className="row">
             <div className="col-sm-12 col-lg-3">
-              <button type="button" className="btn btn-outline-primary">
+              <Link to={`/posts/${post.id}/update`} className="btn btn-outline-primary">
                 Edit Post
-              </button>
+              </Link>
               <button type="button" className="btn ml-sm-2 btn-outline-danger" onClick={this.deletePost}>
                 Delete Post
               </button>
