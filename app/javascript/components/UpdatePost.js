@@ -55,13 +55,6 @@ class UpdatePost extends React.Component {
         throw new Error('Network response was not ok.');
       })
       .then(response => this.setState({ post: response }))
-      /*.then(() => {
-        ['title', 'name', 'content', 'excerpt', 'image'].map(key => {
-          console.log(key + ': ' + this.state.post[key]);
-          el = document.querySelector(`input[name="${key}"]`) || null;
-          if (el) el.value = this.state.post[key];
-        });
-      })*/
       .catch(() => this.props.history.push('/posts'));
   }
 
@@ -85,19 +78,14 @@ class UpdatePost extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     const url = `/api/v1/posts/update/${this.state.post.id}`;
-    const { title, name, content, excerpt, image } = this.state.post;
-
-    // name must be present, and one of title, content or image must be present
-    if (name.length == 0 || title.length == 0 && content.length == 0 && image.length == 0)
-      return;
 
     const body = {
-      title,
-      name,
-      content: content.replace(/\n\n/g, '<br><br>'),
-      excerpt,
-      image
-    };
+      title: this.state.post.title,
+      name: this.state.post.name,
+      excerpt: this.state.post.excerpt,
+      content: this.state.post.content,
+      image: this.state.post.image
+    }
 
     const token = document.querySelector('meta[name="csrf-token"]').content;
     fetch(url, {
@@ -114,7 +102,7 @@ class UpdatePost extends React.Component {
         }
         throw new Error('Network response was not ok.');
       })
-      .then(response => this.props.history.push(`/posts/${response.id}`))
+      .then(() => console.log('updated the post'))
       .catch(error => console.log(error.message));
   }
 
@@ -165,7 +153,7 @@ class UpdatePost extends React.Component {
                       name="excerpt"
                       rows="2"
                       onChange={this.onChange}
-                      value={this.state.post.excerpt}
+                      value={this.state.post.excerpt || ''}
                     />
                   </div>
                   <div className="form-group">
@@ -176,7 +164,7 @@ class UpdatePost extends React.Component {
                       name="content"
                       rows="5"
                       onChange={this.onChange}
-                      value={this.state.post.content}
+                      value={this.state.post.content || ''}
                     />
                   </div>
                   <div className="form-group">

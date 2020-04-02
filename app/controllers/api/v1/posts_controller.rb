@@ -22,11 +22,11 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def update
-    post = post&.update(post_params)
-    if post
-      render json: post
+    p = post&.update(post_params)
+    if p
+      render json: p
     else
-      render json: post.errors
+      render json: p.errors
     end
   end
 
