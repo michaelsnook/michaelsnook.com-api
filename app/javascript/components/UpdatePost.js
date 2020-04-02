@@ -1,6 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+function Banner(props) {
+  return (
+    <div className="hero position-relative d-flex align-items-center justify-content-center w-100">
+      <img
+        src={props.image}
+        alt={`${props.title} image`}
+        className="img-fluid position-absolute"
+      />
+      <div className="overlay bg-dark position-absolute" />
+      <h1 className="display-4 position-relative text-white">
+        {props.title}
+      </h1>
+    </div>
+  );
+}
+
 class UpdatePost extends React.Component {
   constructor(props) {
     super(props);
@@ -180,17 +196,7 @@ class UpdatePost extends React.Component {
             </div>
           </div>
           <div className="col-lg-8">
-            <div className="hero position-relative d-flex align-items-center justify-content-center w-100">
-              <img
-                src={post.image}
-                alt={`${post.title} image`}
-                className="img-fluid position-absolute"
-              />
-              <div className="overlay bg-dark position-absolute" />
-              <h1 className="display-4 position-relative text-white">
-                {post.title}
-              </h1>
-            </div>
+            <Banner {...post} />
 
             <div className="container py-5">
               <div className="row">
