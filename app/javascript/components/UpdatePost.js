@@ -1,21 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-function Banner(props) {
-  return (
-    <div className="hero position-relative d-flex align-items-center justify-content-center w-100">
-      <img
-        src={props.image}
-        alt={`${props.title} image`}
-        className="img-fluid position-absolute"
-      />
-      <div className="overlay bg-dark position-absolute" />
-      <h1 className="display-4 position-relative text-white">
-        {props.title}
-      </h1>
-    </div>
-  );
-}
+import Banner from './Banner';
 
 class UpdatePost extends React.Component {
   constructor(props) {
@@ -178,11 +163,11 @@ class UpdatePost extends React.Component {
                       value={this.state.post.image}
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary mt-3">
+                  <button type="submit" className="btn btn-primary mt-3 px-4">
                     Save post
                   </button>
-                  <Link to="/posts" className="btn btn-link mt-3">
-                    Cancel
+                  <Link to={`/posts/${this.state.post.id}`} className="btn btn-outline-secondary px-4 mt-3 float-right">
+                    Exit
                   </Link>
                 </form>
               </div>
@@ -190,20 +175,12 @@ class UpdatePost extends React.Component {
           </div>
           <div className="col-lg-8">
             <Banner {...this.state.post} />
-
-            <div className="container py-5">
-              <div className="row">
-
-                <div className="col-sm-12 col-lg-8 offset-lg-2 col-md-10 offset-md-1 py-sm-3">
-                  <h5 className="mb-2">Post content</h5>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: `${this.state.post.content}`
-                    }}
-                  />
-                </div>
-
-              </div>
+            <div className="row py-4">
+              <div className="col-sm-12 col-lg-8 offset-lg-2 col-md-10 offset-md-1 py-sm-3"
+                dangerouslySetInnerHTML={{
+                  __html: `${this.state.post.content}`
+                }}
+              />
             </div>
           </div>
         </div>
