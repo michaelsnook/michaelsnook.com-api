@@ -20,7 +20,8 @@ class UpdatePost extends React.Component {
         content: '',
         excerpt: '',
         image: ''
-      }
+      },
+      changed: false
     };
 
     this.onChange = this.onChange.bind(this);
@@ -58,6 +59,7 @@ class UpdatePost extends React.Component {
   onChange(event) {
     const post = {...this.state.post, [event.target.name]: event.target.value };
     this.setState({ post });
+    this.setState({ changed: true });
   }
 
   onSubmit(event) {
@@ -88,6 +90,7 @@ class UpdatePost extends React.Component {
         throw new Error('Network response was not ok.');
       })
       .then(() => console.log('updated the post'))
+      .then(() => this.setState({ changed: false }))
       .catch(error => console.log(error.message));
   }
 
@@ -163,7 +166,7 @@ class UpdatePost extends React.Component {
                       value={this.state.post.image}
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary mt-3 px-4">
+                  <button type="submit" className="btn btn-primary mt-3 px-4" disabled={!this.state.changed}>
                     Save post
                   </button>
                   <Link to={`/posts/${this.state.post.id}`} className="btn btn-outline-secondary px-4 mt-3 float-right">
