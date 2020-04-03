@@ -99,82 +99,78 @@ class UpdatePost extends React.Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-4">
-            <div className="row">
-              <div className="col-12">
-                <h1 className="font-weight-normal my-3">
-                  Edit your post
-                </h1>
-                <form onSubmit={this.onSubmit}>
-                  <div className="form-group">
-                    <label htmlFor="postTitle">Post title</label>
-                    <input
-                      type="text"
-                      name="title"
-                      id="postTitle"
-                      className="form-control"
-                      onChange={this.onChange}
-                      value={this.state.post.title}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="postName">Post URL e.g "post-title-slug"</label>
-                    <div className="input-group mb-3">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">/posts/</span>
-                      </div>
-                      <input
-                        type="text"
-                        name="name"
-                        id="postName"
-                        className="form-control"
-                        required
-                        onChange={this.onChange}
-                        value={this.state.post.name}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="excerpt">Post Excerpt</label>
-                    <textarea
-                      className="form-control"
-                      id="excerpt"
-                      name="excerpt"
-                      rows="2"
-                      onChange={this.onChange}
-                      value={this.state.post.excerpt || ''}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="content">Post Content</label>
-                    <textarea
-                      className="form-control"
-                      id="content"
-                      name="content"
-                      rows="5"
-                      onChange={this.onChange}
-                      value={this.state.post.content || ''}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="postImage">Post image</label>
-                    <input
-                      type="text"
-                      name="image"
-                      id="postImage"
-                      className="form-control"
-                      onChange={this.onChange}
-                      value={this.state.post.image}
-                    />
-                  </div>
-                  <button type="submit" className="btn btn-primary mt-3 px-4" disabled={!this.state.changed}>
-                    Save post
-                  </button>
-                  <Link to={`/posts/${this.state.post.id}`} className="btn btn-outline-secondary px-4 mt-3 float-right">
-                    Exit
-                  </Link>
-                </form>
+            <h1 className="font-weight-normal my-3">
+              Edit your post
+            </h1>
+            <form onSubmit={this.onSubmit}>
+              <div className="form-group">
+                <label htmlFor="postTitle">Post title</label>
+                <input
+                  type="text"
+                  name="title"
+                  id="postTitle"
+                  className="form-control"
+                  onChange={this.onChange}
+                  value={this.state.post.title}
+                />
               </div>
-            </div>
+              <div className="form-group">
+                <label htmlFor="postName">Post URL e.g "post-title-slug"</label>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text">/posts/</span>
+                  </div>
+                  <input
+                    type="text"
+                    name="name"
+                    id="postName"
+                    className="form-control"
+                    required
+                    onChange={this.onChange}
+                    value={this.state.post.name}
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="excerpt">Post Excerpt</label>
+                <textarea
+                  className="form-control"
+                  id="excerpt"
+                  name="excerpt"
+                  rows="2"
+                  onChange={this.onChange}
+                  value={this.state.post.excerpt || ''}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="content">Post Content</label>
+                <textarea
+                  className="form-control"
+                  id="content"
+                  name="content"
+                  rows="5"
+                  onChange={this.onChange}
+                  value={this.state.post.content || ''}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="postImage">Post image</label>
+                <input
+                  type="text"
+                  name="image"
+                  id="postImage"
+                  className="form-control"
+                  onChange={this.onChange}
+                  value={this.state.post.image}
+                />
+              </div>
+              <button type="submit" className="btn btn-primary mt-3 px-4" disabled={!this.state.changed}>
+                Save post
+              </button>
+              <Link to={`/posts/${this.state.post.id}`} className="btn btn-outline-secondary px-4 mt-3 float-right">
+                Exit
+              </Link>
+            </form>
           </div>
           <div className="col-lg-8">
             <Banner {...this.state.post} />
