@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Banner from './Banner';
+import renderMarkdown from './renderMarkdown';
 
 class Post extends React.Component {
   constructor(props) {
@@ -81,20 +82,16 @@ class Post extends React.Component {
                 Delete Post
               </button>
             </div>
-            <div className="col-sm-12 col-lg-8 py-sm-3">
-              <h5 className="mb-2">Post content</h5>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: `${post.content}`
-                }}
-              />
-            </div>
+            <div className="col-sm-12 col-lg-8 py-sm-3"
+              dangerouslySetInnerHTML={{
+                __html: renderMarkdown(post.content)
+              }}
+            />
           </div>
         </div>
       </>
     );
   }
-
 }
 
 export default Post;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Banner from './Banner';
+import renderMarkdown from './renderMarkdown';
 
 class UpdatePost extends React.Component {
   constructor(props) {
@@ -148,7 +149,7 @@ class UpdatePost extends React.Component {
                   className="form-control"
                   id="content"
                   name="content"
-                  rows="5"
+                  rows="10"
                   onChange={this.onChange}
                   value={this.state.post.content || ''}
                 />
@@ -177,7 +178,7 @@ class UpdatePost extends React.Component {
             <div className="row py-4">
               <div className="col-sm-12 col-lg-8 offset-lg-2 col-md-10 offset-md-1 py-sm-3"
                 dangerouslySetInnerHTML={{
-                  __html: `${this.state.post.content}`
+                  __html: renderMarkdown(this.state.post.content)
                 }}
               />
             </div>
