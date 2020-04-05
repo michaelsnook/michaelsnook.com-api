@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Banner from './Banner';
-import renderMarkdown from './renderMarkdown';
+import PostBody from './PostBody';
 
 class Post extends React.Component {
   constructor(props) {
@@ -67,29 +67,22 @@ class Post extends React.Component {
   render() {
     const { post } = this.state;
     return (
-      <>
+      <div className="container-fluid px-0">
         <Banner {...post} />
-        <div className="container py-5">
-          <div className="row">
-            <div className="col-sm-12 col-lg-2">
-              <Link to="/posts" className="btn btn-block btn-link">
-                « Back to posts
-              </Link>
-              <Link to={`/posts/${post.id}/update`} className="btn btn-block btn-outline-primary">
-                Edit Post
-              </Link>
-              <button type="button" className="btn btn-block btn-outline-danger" onClick={this.deletePost}>
-                Delete Post
-              </button>
-            </div>
-            <div className="col-sm-12 col-lg-8 py-sm-3"
-              dangerouslySetInnerHTML={{
-                __html: renderMarkdown(post.content)
-              }}
-            />
-          </div>
-        </div>
-      </>
+        <PostBody {...post}>
+          <>
+            <Link to="/posts" className="btn btn-block btn-link">
+              « Back to posts
+            </Link>
+            <Link to={`/posts/${post.id}/update`} className="btn btn-block btn-outline-primary">
+              Edit Post
+            </Link>
+            <button type="button" className="btn btn-block btn-outline-danger" onClick={this.deletePost}>
+              Delete Post
+            </button>
+          </>
+        </PostBody>
+      </div>
     );
   }
 }

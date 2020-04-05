@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Banner from './Banner';
-import renderMarkdown from './renderMarkdown';
+import PostBody from './PostBody';
 
 class UpdatePost extends React.Component {
   constructor(props) {
@@ -175,13 +175,7 @@ class UpdatePost extends React.Component {
           </div>
           <div className="col-lg-8">
             <Banner {...this.state.post} />
-            <div className="row py-4">
-              <div className="col-sm-12 col-lg-8 offset-lg-2 col-md-10 offset-md-1 py-sm-3"
-                dangerouslySetInnerHTML={{
-                  __html: renderMarkdown(this.state.post.content)
-                }}
-              />
-            </div>
+            <PostBody {...this.state.post} />
           </div>
         </div>
       </div>
