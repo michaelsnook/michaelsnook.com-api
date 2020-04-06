@@ -18,6 +18,7 @@ class UpdatePost extends React.Component {
         id,
         title: '',
         name: '',
+        created_at: '',
         content: '',
         excerpt: '',
         image: ''
@@ -40,6 +41,10 @@ class UpdatePost extends React.Component {
           return response.json();
         }
         throw new Error('Network response was not ok.');
+      })
+      .then(response => {
+        response.created_at = new Date(response.created_at).toISOString().substr(0, 10);
+        return response;
       })
       .then(response => this.setState({ post: response }))
       .catch(() => this.props.history.push('/posts'));
@@ -70,6 +75,7 @@ class UpdatePost extends React.Component {
     const body = {
       title: this.state.post.title,
       name: this.state.post.name,
+      created_at: this.state.post.created_at,
       excerpt: this.state.post.excerpt,
       content: this.state.post.content,
       image: this.state.post.image
@@ -131,6 +137,17 @@ class UpdatePost extends React.Component {
                     value={this.state.post.name}
                   />
                 </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="postDate">Post date</label>
+                <input
+                  type="date"
+                  name="created_at"
+                  id="postDate"
+                  className="form-control"
+                  onChange={this.onChange}
+                  value={this.state.post.created_at}
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="excerpt">Post Excerpt</label>
