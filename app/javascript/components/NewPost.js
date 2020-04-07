@@ -7,6 +7,7 @@ class NewPost extends React.Component {
     this.state = {
       title: '',
       name: '',
+      created_at: new Date().toISOString().substr(0, 10),
       content: '',
       excerpt: '',
       image: ''
@@ -30,7 +31,7 @@ class NewPost extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     const url = '/api/v1/posts/create';
-    const { title, name, content, excerpt, image } = this.state;
+    const { title, name, created_at, content, excerpt, image } = this.state;
 
     // name must be present, and one of title, content or image must be present
     if (name.length == 0 || title.length == 0 && content.length == 0 && image.length == 0)
@@ -39,7 +40,8 @@ class NewPost extends React.Component {
     const body = {
       title,
       name,
-      content: content.replace(/\n/g, '<br> <br>'),
+      created_at,
+      content,
       excerpt,
       image
     };
@@ -97,6 +99,17 @@ class NewPost extends React.Component {
                     onChange={this.onChange}
                   />
                 </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="postDate">Post date</label>
+                <input
+                  type="date"
+                  name="created_at"
+                  id="postDate"
+                  className="form-control"
+                  onChange={this.onChange}
+                  value={this.state.created_at}
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="excerpt">Post Excerpt</label>
