@@ -17,6 +17,7 @@ function PostBody(props) {
   return (
     <div className="Post row py-4 px-3">
       <div className="col-sm-12 col-lg-6 col-md-8 py-sm-3">
+        <h2>{props.title}</h2>
         <p className="text-muted"><em>
           Posted on {dateStamp(props.created_at)}
         </em></p>
