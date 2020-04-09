@@ -27,11 +27,11 @@ class Posts extends React.Component {
     const allPosts = posts.map((post, index) => (
       <div key={index} className="col-md-6 col-lg-4">
         <div className="card mb-4">
-          <img
+          {post.image && <img
             src={post.image}
             className="card-img-top"
             alt={`${post.title} image`}
-          />
+          />}
           <div className="card-body">
             <h5 className="card-title">{post.title}</h5>
             <Link to={`/posts/${post.id}`} className="btn btn-secondary">
