@@ -23,5 +23,5 @@ $purple:  #9348b5;
   opacity: 0.4;
 }
 .Post blockquote {
-  @extend .blockquote, .p-3, .border-left, .border-primary, .bg-light;
+  @extend .blockquote, .p-3, .p-md-4, .px-lg-5, .border-left, .border-primary, .bg-light;
 }
