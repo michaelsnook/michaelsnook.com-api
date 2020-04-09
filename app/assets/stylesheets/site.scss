@@ -1,6 +1,12 @@
 // Place all the styles related to the Homepage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+$primary: #12998c;
+$purple:  #9348b5;
+
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
 .hero {
   width: 100vw;
   height: 50vh;

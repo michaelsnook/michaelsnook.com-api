@@ -26,7 +26,7 @@ function PostBody(props) {
           }}
         />
       </div>
-      <div className="col-sm-12 col-md-2 order-md-first">
+      <div className="col-sm-12 col-md-2 py-sm-3 order-md-first">
         {props.children}
       </div>
     </div>
