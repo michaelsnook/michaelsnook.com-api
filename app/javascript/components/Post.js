@@ -44,6 +44,8 @@ class Post extends React.Component {
   }
 
   deletePost() {
+    if (!confirm('Are you sure you want to delete this post?')) return;
+
     const url = `/api/v1/posts/destroy/${this.state.post.id}`;
     const token = document.querySelector('meta[name="csrf-token"]').content;
 
