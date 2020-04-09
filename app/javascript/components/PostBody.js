@@ -15,8 +15,8 @@ function dateStamp(text) {
 
 function PostBody(props) {
   return (
-    <div className="row py-4 px-3">
-      <div className="col-sm-12 col-lg-8 col-md-10 py-sm-3">
+    <div className="Post row py-4 px-3">
+      <div className="col-sm-12 col-lg-6 col-md-8 py-sm-3">
         <p className="text-muted"><em>
           Posted on {dateStamp(props.created_at)}
         </em></p>
@@ -26,7 +26,7 @@ function PostBody(props) {
           }}
         />
       </div>
-      <div className="col-sm-12 col-md-2 py-sm-3 order-md-first">
+      <div className="col-sm-12 offset-md-1 col-md-2 py-sm-3 order-md-first">
         {props.children}
       </div>
     </div>

@@ -22,3 +22,6 @@ $purple:  #9348b5;
   width: 100%;
   opacity: 0.4;
 }
+.Post blockquote {
+  @extend .blockquote, .p-3, .border-left, .border-primary, .bg-light;
+}
