@@ -105,7 +105,7 @@ class UpdatePost extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-lg-4">
+          <div className="col-lg-4 mb-5">
             <h1 className="font-weight-normal my-3">
               Edit your post
             </h1>

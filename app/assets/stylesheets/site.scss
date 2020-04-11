@@ -2,11 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
+// mostly from https://coolors.co/eac435-345995-e82e81-03a987-fb4d3d
 $green:   #03A987;
 $red:     #E40066;
 $blue:    #345995;
 $purple:  #9348b5;
 $yellow:  #EAC435;
+$orange:  #FB4D3D;
 
 $primary: $green;
 $info:    $blue;
@@ -33,6 +36,18 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   width: 100%;
   opacity: 0.5;
 }
-.Post blockquote {
-  @extend .blockquote, .p-3, .p-md-4, .px-lg-5, .border-left, .border-primary, .bg-light;
+
+.Post {
+  blockquote {
+    @extend .blockquote, .p-3, .p-md-4, .px-lg-5, .border-left, .border-primary, .bg-light;
+  }
+  article { max-width: 640px !important; }
+}
+
+@include media-breakpoint-up(md) {
+  html { font-size: 115%; }
+}
+
+@include media-breakpoint-up(lg) {
+  html { font-size: 130%; }
 }

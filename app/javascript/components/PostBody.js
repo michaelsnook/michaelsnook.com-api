@@ -15,8 +15,8 @@ function dateStamp(text) {
 
 function PostBody(props) {
   return (
-    <div className="Post row py-4 px-3">
-      <div className="col-sm-12 col-lg-6 col-md-8 py-sm-3">
+    <div className="Post row py-4 px-3 d-flex justify-content-center">
+      <article className="py-sm-3 px-1 px-md-0">
         <h2>{props.title}</h2>
         <p className="text-muted"><em>
           Posted on {dateStamp(props.created_at)}
@@ -26,10 +26,12 @@ function PostBody(props) {
             __html: renderMarkdown(props.content)
           }}
         />
-      </div>
-      <div className="col-sm-12 offset-md-1 col-md-2 py-sm-3 order-md-first">
-        {props.children}
-      </div>
+      </article>
+      { props.children &&
+        <div className="col-sm-12 col-md-3 col-lg-2 py-sm-3 order-md-first">
+          {props.children}
+        </div>
+      }
     </div>
   );
 }
