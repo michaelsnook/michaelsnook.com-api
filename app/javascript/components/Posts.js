@@ -25,16 +25,17 @@ class Posts extends React.Component {
   render() {
     const { posts } = this.state;
     const allPosts = posts.map((post, index) => (
-      <div key={index} className="col-md-6 col-lg-4">
-        <div className="card mb-4">
+      <div key={index} className="col-md-6 col-lg-4 pb-4">
+        <div className="card h-100">
           {post.image && <img
             src={post.image}
             className="card-img-top"
             alt={`${post.title} image`}
           />}
-          <div className="card-body">
+          <div className="card-body d-flex align-items-start flex-column">
             <h5 className="card-title">{post.title}</h5>
-            <Link to={`/posts/${post.id}`} className="btn btn-secondary">
+            {!post.image && <p className="card-text">{post.excerpt}</p>}
+            <Link to={`/posts/${post.id}`} className="mt-auto btn btn-sm btn-outline-secondary btn-block">
               View Post
             </Link>
           </div>
@@ -68,7 +69,7 @@ class Posts extends React.Component {
                 Create New Post
               </Link>
             </div>
-            <div className="row">
+            <div className="row align-content-stretch d-flex flex-wrap">
 
               {posts.length > 0 ? allPosts : noPosts}
 

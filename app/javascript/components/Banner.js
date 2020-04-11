@@ -9,7 +9,7 @@ function Banner(props) {
         className="img-fluid position-absolute"
       />}
       <div className="overlay bg-dark position-absolute" />
-      <div className="position-relative text-white text-center">
+      <div className="position-relative text-white text-center container">
         <h1 className="display-4 text-white">
           {props.title}
         </h1>
