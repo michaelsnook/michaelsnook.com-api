@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from '../components/Home';
 import Posts from '../components/Posts';
 import Post from '../components/Post';
 import NewPost from '../components/NewPost';
@@ -10,7 +9,7 @@ import Brand from '../components/Brand';
 export default (
   <Router>
     <Switch>
-      <Route path='/' exact component={Home} />
+      <Route path='/' exact component={Posts} />
       <Route path='/brand' exact component={Brand} />
       <Route path='/posts' exact component={Posts} />
       <Route path='/posts/new' exact component={NewPost} />
