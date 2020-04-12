@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Banner from './Banner';
 import PostBody from './PostBody';
+import face from '../../assets/images/profile-picture.jpg';
 
 class Post extends React.Component {
   constructor(props) {
@@ -73,6 +74,8 @@ class Post extends React.Component {
         <Banner {...post} />
         <PostBody {...post}>
           <>
+            <img src={face} className="img-fluid rounded-circle px-4 my-3" />
+            <p className="text-center text-muted small">By Michael Snook</p>
             <Link to="/posts" className="btn btn-block btn-link">
               « Back to posts
             </Link>
