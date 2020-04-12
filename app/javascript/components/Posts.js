@@ -33,7 +33,7 @@ class Posts extends React.Component {
             alt={`${post.title} image`}
           />}
           <div className="card-body d-flex align-items-start flex-column">
-            <h5 className="card-title">{post.title}</h5>
+            <h4 className="card-title">{post.title}</h4>
             {!post.image && <p className="card-text">{post.excerpt}</p>}
             <Link to={`/posts/${post.id}`} className="mt-auto btn btn-sm btn-outline-secondary btn-block">
               View Post

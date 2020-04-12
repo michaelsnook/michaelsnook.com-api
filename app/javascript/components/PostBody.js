@@ -16,7 +16,7 @@ function dateStamp(text) {
 function PostBody(props) {
   return (
     <div className="Post row py-4 px-3 d-flex justify-content-center">
-      <article className="py-sm-3 px-1 px-md-0">
+      <article className="py-sm-3 px-1 px-md-0 col">
         <h2>{props.title}</h2>
         <p className="text-muted"><em>
           Posted on {dateStamp(props.created_at)}
