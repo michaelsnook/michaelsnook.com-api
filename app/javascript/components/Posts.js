@@ -52,14 +52,19 @@ class Posts extends React.Component {
 
     return (
       <>
-        <section className="jumbotron jumbotron-fluid text-center">
-          <div className="container py-5">
-            <h1 className="display-4">Posts for every occasion</h1>
-            <p className="lead text-muted">
-              We’ve pulled together our posts, our latest
-              additions, and our editor’s picks, so there’s sure to be something
-              tempting for you to read.
-            </p>
+        <section className="hero position-relative d-flex align-items-center justify-content-center w-100">
+          <img className="Cover-image bottom" src="/como.jpg" alt="a picture of mountains" />
+          <div className="overlay bg-dark position-absolute"></div>
+          <div className="position-relative text-white container">
+            <div className="row">
+              <div className="col-12 col-md-8">
+                <h1 className="display-4 text-white">Michael Snook&rsquo;s site</h1>
+                <p className="text-white lead">A little weblog and project pad</p>
+              </div>
+              <div className="col-md-4 col-12">
+                <img id="my-face" src="/my-circle-drawing.png" alt="A comic sketch of Michael Snook" />
+              </div>
+            </div>
           </div>
         </section>
         <div className="py-5">

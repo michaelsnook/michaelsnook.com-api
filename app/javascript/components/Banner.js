@@ -6,7 +6,7 @@ function Banner(props) {
       {props.image && <img
         src={props.image}
         alt={`${props.title} image`}
-        className="img-fluid position-absolute"
+        className="Cover-image"
       />}
       <div className="overlay bg-dark position-absolute" />
       <div className="position-relative text-white text-center container">

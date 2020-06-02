@@ -27,16 +27,22 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   height: 50vh;
   @extend .px-md-4, .px-lg-5;
 }
-.hero img {
+.Cover-image {
+  @extend .img-fluid, .position-absolute;
   object-fit: cover;
   object-position: top;
   height: 100%;
   width: 100%;
 }
+.Cover-image.bottom { object-position: bottom; }
 .overlay {
   height: 100%;
   width: 100%;
   opacity: 0.5;
+}
+#my-face {
+  max-width: 150px;
+  @extend .float-md-right;
 }
 
 .Post {
