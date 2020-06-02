@@ -103,9 +103,9 @@ class UpdatePost extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-lg-4 mb-5">
+      <div className="container-fluid px-0">
+        <div className="row mx-0">
+          <div className="col-lg-4 mb-5 pl-3">
             <h1 className="font-weight-normal my-3">
               Edit your post
             </h1>
@@ -190,7 +190,7 @@ class UpdatePost extends React.Component {
               </Link>
             </form>
           </div>
-          <div className="col-lg-8">
+          <div className="col-lg-8 px-0">
             <Banner {...this.state.post} />
             <PostBody {...this.state.post} />
           </div>
