@@ -67,12 +67,16 @@ class Posts extends React.Component {
             </div>
           </div>
         </section>
+
         <div className="py-5">
           <main className="container">
-            <div className="text-right mb-3">
+            <div className="mb-3">
               <Link to="/posts/new" className="btn btn-secondary">
                 Create New Post
               </Link>
+              <span className="text-muted">
+                &nbsp; (Please do not click this button unless you are authorized to do so (only Michael).)
+              </span>
             </div>
             <div className="row align-content-stretch d-flex flex-wrap">
 
