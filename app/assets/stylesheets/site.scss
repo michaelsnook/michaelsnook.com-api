@@ -6,18 +6,20 @@
 // mostly from https://coolors.co/eac435-345995-e82e81-03a987-fb4d3d
 $green:   #03A987;
 $red:     #E40066;
-$blue:    #345995;
+$blue:    #006D9F;
+
 $purple:  #9348b5;
 $yellow:  #EAC435;
 $orange:  #FB4D3D;
 
-$primary: $green;
-$info:    $blue;
+$info:    $green;
+$danger:  $orange;
 
 @import '../../../node_modules/bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600&display=swap');
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  font-family: Georgia, serif;
+  font-family: 'Exo 2', serif;
 }
 
 .hero {
