@@ -52,11 +52,3 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   }
   article { max-width: 640px !important; }
 }
-
-@include media-breakpoint-up(md) {
-  p { font-size: 115%; }
-}
-
-@include media-breakpoint-up(lg) {
-  p { font-size: 130%; }
-}
