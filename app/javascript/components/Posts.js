@@ -1,11 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+function loginButton() {
+  return (
+    <div className="mb-3">
+      <Link to="/posts/new" className="btn btn-secondary">
+        Create New Post
+      </Link>
+      <span className="text-muted">
+        &nbsp; (Please do not click this button unless you are authorized to do so (only Michael).)
+      </span>
+    </div>
+  );
+}
+
 class Posts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: []
+      posts: [],
+      user: null
     };
   }
 
@@ -70,14 +84,7 @@ class Posts extends React.Component {
 
         <div className="py-5">
           <main className="container">
-            <div className="mb-3">
-              <Link to="/posts/new" className="btn btn-secondary">
-                Create New Post
-              </Link>
-              <span className="text-muted">
-                &nbsp; (Please do not click this button unless you are authorized to do so (only Michael).)
-              </span>
-            </div>
+            { this.state.user && loginButton() }
             <div className="row align-content-stretch d-flex flex-wrap">
 
               {posts.length > 0 ? allPosts : noPosts}
