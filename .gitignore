@@ -6,6 +6,10 @@
 
 .DS_Store
 
+# Ignore local .env files
+.env
+.env.development
+
 # Ignore bundler config.
 /.bundle
 
