@@ -1,6 +1,10 @@
 {
   "name": "michaelsnook_com",
   "private": true,
+  "engines": {
+    "node": "14.15",
+    "yarn": "1.22.x"
+  },
   "dependencies": {
     "@babel/preset-react": "^7.9.1",
     "@rails/actioncable": "^6.0.0",
