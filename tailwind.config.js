@@ -3,9 +3,13 @@ module.exports = {
     './app/**/*.html.erb',
     './app/javascript/**/*.js',
   ],
-  darkMode: media, // or 'media' or 'class'
+  darkMode: false, // or false or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'slab': ['"Exo 2"', 'sans-serif'],
+      },
+    },
   },
   variants: {
     extend: {},
