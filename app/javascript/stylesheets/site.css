@@ -1,9 +1,9 @@
-// Place all the styles related to the Homepage controller here.
+/* Place all the styles related to the Homepage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-// mostly from https://coolors.co/eac435-345995-e82e81-03a987-fb4d3d
+// mostly from https://coolors.co/eac435-345995-e82e81-03a987-fb4d3d 
 $green:   #03A987;
 $red:     #E40066;
 $blue:    #006D9F;
@@ -13,9 +13,8 @@ $yellow:  #EAC435;
 $orange:  #FB4D3D;
 
 $info:    $green;
-$danger:  $orange;
+$danger:  $orange;*/
 
-@import '../../../node_modules/bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600&display=swap');
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
@@ -25,11 +24,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 .hero {
   width: 100vw;
   height: 50vh;
-  @extend .px-md-4, .px-lg-5;
+  //@apply px-md-4, px-lg-5;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
 }
 .Cover-image {
-  @extend .img-fluid, .position-absolute;
+  //@apply img-fluid, position-absolute;
   object-fit: cover;
   object-position: top;
   height: 100%;
@@ -43,12 +42,12 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 #my-face {
   max-width: 150px;
-  @extend .float-md-right;
+  //@apply float-md-right;
 }
 
 .Post {
   blockquote {
-    @extend .blockquote, .p-3, .p-md-4, .px-lg-5, .border-left, .border-primary, .bg-light;
+    //@apply blockquote, p-3, p-md-4, px-lg-5, border-left, border-primary, bg-light;
   }
   article { max-width: 640px !important; }
 }
