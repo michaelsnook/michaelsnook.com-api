@@ -2,18 +2,18 @@ import React from 'react';
 
 function Banner(props) {
   return (
-    <div className="hero position-relative d-flex align-items-center justify-content-center w-100">
+    <div className="hero">
       {props.image && <img
         src={props.image}
         alt={`${props.title} image`}
-        className="Cover-image"
+        className="Cover-image object-top"
       />}
-      <div className="overlay bg-dark position-absolute" />
-      <div className="position-relative text-white text-center container">
-        <h1 className="display-4 text-white">
+      <div className="w-full h-full bg-gray-700 opacity-50 absolute" />
+      <div className="container relative text-white text-center ">
+        <h1 className="h-title">
           {props.title}
         </h1>
-        <p className="text-white lead">
+        <p className="text-xl">
           {props.excerpt}
         </p>
       </div>

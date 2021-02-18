@@ -23,25 +23,45 @@ $danger:  $orange;*/
     src: url(https://fonts.gstatic.com/s/exo2/v10/7cHmv4okm5zmbtYoK-4W4nIp.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
+  @font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v10/7cHmv4okm5zmbtYoK-4W4nIp.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
-
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  @apply font-slab;
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    @apply font-slab;
+  }
+  h1, .h1 {
+    @apply text-2xl;
+  }
+  h2, .h2 {
+    @apply text-xl;
+  }
+  h3, .h3 {
+    @apply text-lg;
+  }
+  .h-title {
+    @apply text-6xl font-light;
+  }
 }
 
 .hero {
-  width: 100vw;
+  /* apply px-md-4 px-lg-5 */
+  @apply relative w-full flex items-center;
   height: 50vh;
-  //@apply px-md-4, px-lg-5;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
 }
+.hero .h-title {
+  @apply mb-3;
+}
+.container {
+  max-width: 1140px;
+}
 .Cover-image {
-  //@apply img-fluid, position-absolute;
-  object-fit: cover;
-  object-position: top;
-  height: 100%;
-  width: 100%;
+  @apply absolute object-cover w-full h-full;
 }
 .Cover-image.bottom { object-position: bottom; }
 .overlay {
@@ -51,7 +71,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 #my-face {
   max-width: 150px;
-  //@apply float-md-right;
+  @apply md:float-right;
 }
 
 .Post {
