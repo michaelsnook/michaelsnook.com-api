@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'resume', :to => redirect('/resume.html')
+
   root 'homepage#index'
   get '/*path' => 'homepage#index'
 
