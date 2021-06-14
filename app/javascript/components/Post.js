@@ -69,6 +69,7 @@ class Post extends React.Component {
 
   render() {
     const { post } = this.state;
+    const user = false;
     return (
       <div className="container-fluid px-0">
         <Banner {...post} />
@@ -79,12 +80,14 @@ class Post extends React.Component {
             <Link to="/posts" className="btn btn-block btn-link">
               « Back to posts
             </Link>
-            <Link to={`/posts/${post.id}/update`} className="btn btn-block btn-outline-primary">
-              Edit Post
-            </Link>
-            <button type="button" className="btn btn-block btn-outline-danger" onClick={this.deletePost}>
-              Delete Post
-            </button>
+            {user && <>
+              <Link to={`/posts/${post.id}/update`} className="btn btn-block btn-outline-primary">
+                Edit Post
+              </Link>
+              <button type="button" className="btn btn-block btn-outline-danger" onClick={this.deletePost}>
+                Delete Post
+              </button>
+            </>}
           </>
         </PostBody>
       </div>
