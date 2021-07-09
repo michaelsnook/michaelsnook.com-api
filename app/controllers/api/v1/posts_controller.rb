@@ -1,6 +1,6 @@
 class Api::V1::PostsController < ApplicationController
   def index
-    posts = Post.order(created_at: :desc)
+    posts = Post.where(published: true).order(created_at: :desc)
     render json: posts
   end
 
@@ -38,7 +38,7 @@ class Api::V1::PostsController < ApplicationController
   private
 
   def post_params
-    params.permit(:name, :title, :excerpt, :content, :image, :created_at)
+    params.permit(:name, :title, :excerpt, :content, :image, :created_at, :published)
   end
 
   def post

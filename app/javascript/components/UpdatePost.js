@@ -21,7 +21,8 @@ class UpdatePost extends React.Component {
         created_at: '',
         content: '',
         excerpt: '',
-        image: ''
+        image: '',
+        published: false,
       },
       changed: false
     };
@@ -63,7 +64,10 @@ class UpdatePost extends React.Component {
   }
 
   onChange(event) {
-    const post = {...this.state.post, [event.target.name]: event.target.value };
+    const val = event.target.type === 'checkbox'
+      ? event.target.checked
+      : event.target.value
+    const post = { ...this.state.post, [event.target.name]: val };
     this.setState({ post });
     this.setState({ changed: true });
   }
@@ -78,7 +82,8 @@ class UpdatePost extends React.Component {
       created_at: this.state.post.created_at,
       excerpt: this.state.post.excerpt,
       content: this.state.post.content,
-      image: this.state.post.image
+      image: this.state.post.image,
+      published: this.state.post.published,
     }
 
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -180,6 +185,17 @@ class UpdatePost extends React.Component {
                   className="form-control"
                   onChange={this.onChange}
                   value={this.state.post.image}
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-check-label" for="publishedCheck">Publish&nbsp;</label>
+                <input
+                  type="checkbox"
+                  name="published"
+                  className="form-check-input ml-4"
+                  id="publishedCheck"
+                  onChange={this.onChange}
+                  checked={this.state.post.published}
                 />
               </div>
               <button type="submit" className="btn btn-primary mt-3 px-4" disabled={!this.state.changed}>
