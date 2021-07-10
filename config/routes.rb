@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get    'posts/index'
+      get    'posts/drafts',      to: 'posts#drafts'
       post   'posts/create'
       get    'posts/show/:id',    to: 'posts#show'
       post   'posts/update/:id',  to: 'posts#update'

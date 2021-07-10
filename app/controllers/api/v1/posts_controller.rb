@@ -4,6 +4,11 @@ class Api::V1::PostsController < ApplicationController
     render json: posts
   end
 
+  def drafts
+    posts = Post.where(published: false).order(id: :desc)
+    render json: posts
+  end
+
   def create
     post = Post.create!(post_params)
     if post
