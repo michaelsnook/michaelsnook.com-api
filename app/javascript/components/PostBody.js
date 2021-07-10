@@ -21,6 +21,7 @@ function PostBody(props) {
         <p className="text-muted"><em>
           Posted on {dateStamp(props.created_at)}
         </em></p>
+        <img className="img-fluid mb-4" src={props.image} alt="" />
         <div
           dangerouslySetInnerHTML={{
             __html: renderMarkdown(props.content)

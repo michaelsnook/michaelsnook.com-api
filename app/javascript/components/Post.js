@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Banner from './Banner';
 import PostBody from './PostBody';
 import face from '../../assets/images/profile-picture.jpg';
 
@@ -72,7 +71,6 @@ class Post extends React.Component {
     const user = false;
     return (
       <div className="container-fluid px-0">
-        <Banner {...post} />
         <PostBody {...post}>
           <>
             <img src={face} className="img-fluid rounded-circle px-4 my-3" />

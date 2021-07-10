@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Banner from './Banner';
 import PostBody from './PostBody';
 
 class UpdatePost extends React.Component {
@@ -207,7 +206,6 @@ class UpdatePost extends React.Component {
             </form>
           </div>
           <div className="col-lg-8 px-0">
-            <Banner {...this.state.post} />
             <PostBody {...this.state.post} />
           </div>
         </div>
