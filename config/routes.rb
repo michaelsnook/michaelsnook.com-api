@@ -7,6 +7,10 @@ Rails.application.routes.draw do
       get    'posts/show/:id',    to: 'posts#show'
       post   'posts/update/:id',  to: 'posts#update'
       delete 'posts/destroy/:id', to: 'posts#destroy'
+
+      post   '/login',            to: 'sessions#create'
+      post   '/logout',           to: 'sessions#destroy'
+      get    '/logged_in',        to: 'sessions#is_logged_in?'
     end
   end
 
