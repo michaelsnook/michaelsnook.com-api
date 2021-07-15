@@ -60,6 +60,10 @@ class Post extends React.Component {
         if (response.ok) {
           return response.json();
         }
+        else if (response.status === 401) {
+          alert(`You must log in to perform this action.`)
+          throw new Error('Not authorized. Please log in.');
+        }
         throw new Error("Network response was not ok.");
       })
       .then(() => this.props.history.push("/posts"))
