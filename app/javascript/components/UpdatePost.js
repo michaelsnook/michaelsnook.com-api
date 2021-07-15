@@ -191,7 +191,7 @@ class UpdatePost extends React.Component {
                 />
               </div>
               <div className="form-group">
-                <label className="form-check-label" for="publishedCheck">Publish&nbsp;</label>
+                <label className="form-check-label" htmlFor="publishedCheck">Publish&nbsp;</label>
                 <input
                   type="checkbox"
                   name="published"
