@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
-  helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!, :set_user
+  helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!, :set_user, :check_logged_in!
 
   def login!
     session[:user_id] = @user.id
@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!session[:user_id]
+  end
+
+  def check_logged_in!
+    return true if logged_in?
+    render json: {
+      logged_in: false,
+      message: 'not logged in'
+    }, status: 401
+    return false
   end
 
   def current_user

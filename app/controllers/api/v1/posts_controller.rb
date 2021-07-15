@@ -1,4 +1,6 @@
 class Api::V1::PostsController < ApplicationController
+  before_action :check_logged_in!, except: [:index, :show]
+
   def index
     posts = Post.where(published: true).order(created_at: :desc)
     render json: posts

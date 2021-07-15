@@ -25,7 +25,7 @@ class Api::V1::SessionsController < ApplicationController
       render json: {
         logged_in: false,
         message: 'no such user'
-      }
+      }, status: 401
     end
   end
 

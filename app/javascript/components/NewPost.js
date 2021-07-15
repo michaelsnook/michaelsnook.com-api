@@ -10,7 +10,7 @@ class NewPost extends React.Component {
       created_at: new Date().toISOString().substr(0, 10),
       content: '',
       excerpt: '',
-      image: ''
+      image: '',
     };
 
     this.onChange = this.onChange.bind(this);
@@ -59,9 +59,15 @@ class NewPost extends React.Component {
         if (response.ok) {
           return response.json();
         }
+        else if (response.status === 401) {
+          alert(`You must log in to perform this action. You can open the login page in another tab to keep your work here.`)
+          throw new Error('Not authorized. Please log in.')
+        }
         throw new Error('Network response was not ok.');
       })
-      .then(response => this.props.history.push(`/posts/${response.id}`))
+      .then(response => {
+        if (response?.id) this.props.history.push(`/posts/${response.id}/update`)
+      })
       .catch(error => console.log(error.message));
   }
 

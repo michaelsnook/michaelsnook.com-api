@@ -19,6 +19,12 @@ class ListDraftPosts extends React.Component {
         if (response.ok) {
           return response.json();
         }
+        else if (response.status === 401) {
+          this.props.history.push({
+            pathname: `/login`,
+            //state: {goal_uri: '/posts/drafts', message: ''},
+          })
+        }
         throw new Error('Network response was not ok.');
       })
       .then(response => this.setState({ posts: response }))

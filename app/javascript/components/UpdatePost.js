@@ -98,6 +98,10 @@ class UpdatePost extends React.Component {
         if (response.ok) {
           return response.json();
         }
+        else if (response.status === 401) {
+          alert(`You must log in to perform this action. You can open the login page in another tab to keep your work here.`);
+          throw new Error('Not authorized. Please log in.');
+        }
         throw new Error('Network response was not ok.');
       })
       .then(() => console.log('updated the post'))
