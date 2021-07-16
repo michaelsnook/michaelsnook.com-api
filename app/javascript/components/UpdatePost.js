@@ -1,16 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PostBody from './PostBody';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import PostBody from './PostBody'
 
 class UpdatePost extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     const {
       match: {
         params: { id }
       }
-    } = this.props;
+    } = this.props
 
     this.state = {
       post: {
@@ -23,57 +23,57 @@ class UpdatePost extends React.Component {
         image: '',
         published: false,
       },
-      changed: false
-    };
+      changed: false,
+    }
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.addHtmlEntities = this.addHtmlEntities.bind(this);
-    this.stripHtmlEntities = this.stripHtmlEntities.bind(this);
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+    this.addHtmlEntities = this.addHtmlEntities.bind(this)
+    this.stripHtmlEntities = this.stripHtmlEntities.bind(this)
   }
 
   componentDidMount() {
-    const url = `/api/v1/posts/show/${this.state.post.id}`;
+    const url = `/api/v1/posts/show/${this.state.post.id}`
 
     fetch(url)
       .then(response => {
         if (response.ok) {
-          return response.json();
+          return response.json()
         }
-        throw new Error('Network response was not ok.');
+        throw new Error('Network response was not ok.')
       })
       .then(response => {
-        response.created_at = new Date(response.created_at).toISOString().substr(0, 10);
-        return response;
+        response.created_at = new Date(response.created_at).toISOString().substr(0, 10)
+        return response
       })
       .then(response => this.setState({ post: response }))
-      .catch(() => this.props.history.push('/posts'));
+      .catch(() => this.props.history.push('/posts'))
   }
 
   stripHtmlEntities(str) {
     return String(str)
       .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+      .replace(/>/g, '&gt;')
   }
 
   addHtmlEntities(str) {
     return String(str)
       .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>');
+      .replace(/&gt;/g, '>')
   }
 
   onChange(event) {
     const val = event.target.type === 'checkbox'
       ? event.target.checked
       : event.target.value
-    const post = { ...this.state.post, [event.target.name]: val };
-    this.setState({ post });
-    this.setState({ changed: true });
+    const post = { ...this.state.post, [event.target.name]: val }
+    this.setState({ post })
+    this.setState({ changed: true })
   }
 
   onSubmit(event) {
-    event.preventDefault();
-    const url = `/api/v1/posts/update/${this.state.post.id}`;
+    event.preventDefault()
+    const url = `/api/v1/posts/update/${this.state.post.id}`
 
     const body = {
       title: this.state.post.title,
@@ -85,7 +85,7 @@ class UpdatePost extends React.Component {
       published: this.state.post.published,
     }
 
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const token = document.querySelector('meta[name="csrf-token"]').content
     fetch(url, {
       method: 'POST',
       headers: {
@@ -96,17 +96,17 @@ class UpdatePost extends React.Component {
     })
       .then(response => {
         if (response.ok) {
-          return response.json();
+          return response.json()
         }
         else if (response.status === 401) {
-          alert(`You must log in to perform this action. You can open the login page in another tab to keep your work here.`);
-          throw new Error('Not authorized. Please log in.');
+          alert(`You must log in to perform this action. You can open the login page in another tab to keep your work here.`)
+          throw new Error('Not authorized. Please log in.')
         }
-        throw new Error('Network response was not ok.');
+        throw new Error('Network response was not ok.')
       })
       .then(() => console.log('updated the post'))
       .then(() => this.setState({ changed: false }))
-      .catch(error => console.log(error.message));
+      .catch(error => console.log(error.message))
   }
 
   render() {
@@ -214,8 +214,8 @@ class UpdatePost extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default UpdatePost;
+export default UpdatePost

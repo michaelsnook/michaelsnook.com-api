@@ -1,53 +1,53 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PostBody from './PostBody';
-import face from '../../assets/images/profile-picture.jpg';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import PostBody from './PostBody'
+import face from '../../assets/images/profile-picture.jpg'
 
 class Post extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     const {
       match: {
         params: { id }
       }
-    } = this.props;
+    } = this.props
 
     this.state = {
       post: {
         id,
         name: ''
       }
-    };
+    }
 
-    this.addHtmlEntities = this.addHtmlEntities.bind(this);
-    this.deletePost = this.deletePost.bind(this);
+    this.addHtmlEntities = this.addHtmlEntities.bind(this)
+    this.deletePost = this.deletePost.bind(this)
   }
 
   componentDidMount() {
-    const url = `/api/v1/posts/show/${this.state.post.id}`;
+    const url = `/api/v1/posts/show/${this.state.post.id}`
     fetch(url)
       .then(response => {
         if (response.ok) {
-          return response.json();
+          return response.json()
         }
-        throw new Error('Network response was not ok.');
+        throw new Error('Network response was not ok.')
       })
       .then(response => this.setState({ post: response }))
-      .catch(() => this.props.history.push('/posts'));
+      .catch(() => this.props.history.push('/posts'))
   }
 
   addHtmlEntities(str) {
     return String(str)
       .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>');
+      .replace(/&gt;/g, '>')
   }
 
   deletePost() {
-    if (!confirm('Are you sure you want to delete this post?')) return;
+    if (!confirm('Are you sure you want to delete this post?')) return
 
-    const url = `/api/v1/posts/destroy/${this.state.post.id}`;
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const url = `/api/v1/posts/destroy/${this.state.post.id}`
+    const token = document.querySelector('meta[name="csrf-token"]').content
 
     fetch(url, {
       method: "DELETE",
@@ -58,21 +58,21 @@ class Post extends React.Component {
     })
       .then(response => {
         if (response.ok) {
-          return response.json();
+          return response.json()
         }
         else if (response.status === 401) {
           alert(`You must log in to perform this action.`)
-          throw new Error('Not authorized. Please log in.');
+          throw new Error('Not authorized. Please log in.')
         }
-        throw new Error("Network response was not ok.");
+        throw new Error("Network response was not ok.")
       })
       .then(() => this.props.history.push("/posts"))
-      .catch(error => console.log(error.message));
+      .catch(error => console.log(error.message))
   }
 
   render() {
-    const { post } = this.state;
-    const user = false;
+    const { post } = this.state
+    const user = false
     return (
       <div className="container-fluid px-0">
         <PostBody {...post}>
@@ -93,8 +93,8 @@ class Post extends React.Component {
           </>
         </PostBody>
       </div>
-    );
+    )
   }
 }
 
-export default Post;
+export default Post

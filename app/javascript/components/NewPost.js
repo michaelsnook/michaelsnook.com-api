@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 class NewPost extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       title: '',
       name: '',
@@ -11,31 +11,31 @@ class NewPost extends React.Component {
       content: '',
       excerpt: '',
       image: '',
-    };
+    }
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.stripHtmlEntities = this.stripHtmlEntities.bind(this);
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+    this.stripHtmlEntities = this.stripHtmlEntities.bind(this)
   }
 
   stripHtmlEntities(str) {
     return String(str)
       .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+      .replace(/>/g, '&gt;')
   }
 
   onChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value })
   }
 
   onSubmit(event) {
-    event.preventDefault();
-    const url = '/api/v1/posts/create';
-    const { title, name, created_at, content, excerpt, image } = this.state;
+    event.preventDefault()
+    const url = '/api/v1/posts/create'
+    const { title, name, created_at, content, excerpt, image } = this.state
 
     // name must be present, and one of title, content or image must be present
     if (name.length == 0 || title.length == 0 && content.length == 0 && image.length == 0)
-      return;
+      return
 
     const body = {
       title,
@@ -44,9 +44,9 @@ class NewPost extends React.Component {
       content,
       excerpt,
       image
-    };
+    }
 
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const token = document.querySelector('meta[name="csrf-token"]').content
     fetch(url, {
       method: 'POST',
       headers: {
@@ -57,18 +57,18 @@ class NewPost extends React.Component {
     })
       .then(response => {
         if (response.ok) {
-          return response.json();
+          return response.json()
         }
         else if (response.status === 401) {
           alert(`You must log in to perform this action. You can open the login page in another tab to keep your work here.`)
           throw new Error('Not authorized. Please log in.')
         }
-        throw new Error('Network response was not ok.');
+        throw new Error('Network response was not ok.')
       })
       .then(response => {
         if (response?.id) this.props.history.push(`/posts/${response.id}/update`)
       })
-      .catch(error => console.log(error.message));
+      .catch(error => console.log(error.message))
   }
 
   render() {
@@ -157,8 +157,8 @@ class NewPost extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default NewPost;
+export default NewPost
