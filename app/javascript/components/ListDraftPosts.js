@@ -1,15 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Banner from './Banner';
-
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Banner from './Banner'
 
 class ListDraftPosts extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       posts: [],
       user: null
-    };
+    }
   }
 
   componentDidMount() {
@@ -31,7 +30,8 @@ class ListDraftPosts extends React.Component {
   }
 
   render() {
-    const { posts } = this.state;
+    const { posts } = this.state
+
     const allPosts = posts.map((post, index) => (
       <div key={index} className="col-md-6 col-lg-4 pb-4">
         <div className="card h-100">
@@ -49,14 +49,15 @@ class ListDraftPosts extends React.Component {
           </div>
         </div>
       </div>
-    ));
+    ))
+
     const noPosts = (
       <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
         <h4>
           No draft posts yet. Why not <Link to="/posts/new">create one</Link>
         </h4>
       </div>
-    );
+    )
 
     return (
       <>
@@ -76,7 +77,8 @@ class ListDraftPosts extends React.Component {
           </main>
         </div>
       </>
-    );
+    )
   }
 }
-export default ListDraftPosts;
+
+export default ListDraftPosts

@@ -1,19 +1,19 @@
-import React from 'react';
-import renderMarkdown from './renderMarkdown';
+import React from 'react'
+import renderMarkdown from './renderMarkdown'
 
 function dateStamp(text) {
-  const out = new Date(text);
+  const out = new Date(text)
   try {
     return out.toLocaleString('en-IN',
       { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-    );
+    )
   }
   catch(e) {
     return out.toDateString();
   }
 }
 
-function PostBody(props) {
+export default function PostBody(props) {
   return (
     <div className="Post row py-4 px-3 mx-0 d-flex justify-content-center">
       <article className="py-sm-3 px-1 px-md-0 col">
@@ -34,7 +34,5 @@ function PostBody(props) {
         </div>
       }
     </div>
-  );
+  )
 }
-
-export default PostBody;

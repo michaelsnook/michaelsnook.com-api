@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Banner from './Banner';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Banner from './Banner'
 
 
 function loginButton() {
@@ -13,16 +13,16 @@ function loginButton() {
         &nbsp; (Please do not click this button unless you are authorized to do so (only Michael).)
       </span>
     </div>
-  );
+  )
 }
 
 class Posts extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       posts: [],
       user: null
-    };
+    }
   }
 
   componentDidMount() {
@@ -30,16 +30,17 @@ class Posts extends React.Component {
     fetch(url)
       .then(response => {
         if (response.ok) {
-          return response.json();
+          return response.json()
         }
-        throw new Error('Network response was not ok.');
+        throw new Error('Network response was not ok.')
       })
       .then(response => this.setState({ posts: response }))
-      .catch(() => this.props.history.push('/'));
+      .catch(() => this.props.history.push('/'))
   }
 
   render() {
-    const { posts } = this.state;
+    const { posts } = this.state
+
     const allPosts = posts.map((post, index) => (
       <div key={index} className="col-md-6 col-lg-4 pb-4">
         <div className="card h-100">
@@ -57,14 +58,15 @@ class Posts extends React.Component {
           </div>
         </div>
       </div>
-    ));
+    ))
+
     const noPosts = (
       <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
         <h4>
           No posts yet. Why not <Link to="/posts/new">create one</Link>
         </h4>
       </div>
-    );
+    )
 
     return (
       <>
@@ -83,7 +85,8 @@ class Posts extends React.Component {
           </main>
         </div>
       </>
-    );
+    )
   }
 }
-export default Posts;
+
+export default Posts
