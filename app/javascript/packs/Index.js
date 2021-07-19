@@ -3,8 +3,6 @@ import { render } from 'react-dom';
 import App from '../components/App';
 
 document.addEventListener('DOMContentLoaded', () => {
-  render(
-    <App />,
-    document.body.appendChild(document.createElement('div'))
-  );
+  const rootNode = document.getElementById('root');
+  render(<App />, rootNode);
 });
