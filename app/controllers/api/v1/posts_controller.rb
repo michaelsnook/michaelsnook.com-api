@@ -55,6 +55,6 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def post
-    @post ||= Post.find(params[:id])
+    @post ||= params[:id] ? Post.find(params[:id]) : Post.find_by_name(params[:name])
   end
 end
