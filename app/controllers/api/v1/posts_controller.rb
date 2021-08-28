@@ -3,7 +3,7 @@ class Api::V1::PostsController < ApplicationController
 
   def index
     posts = Post
-      .select(:id, :name, :title, :created_at, :image, :excerpt)
+      .select(:id, :slug, :title, :created_at, :image, :excerpt)
       .where(published: true)
       .order(created_at: :desc)
     render json: posts
@@ -11,7 +11,7 @@ class Api::V1::PostsController < ApplicationController
 
   def drafts
     posts = Post
-      .select(:id, :name, :title, :created_at, :image, :excerpt)
+      .select(:id, :slug, :title, :created_at, :image, :excerpt)
       .where(published: false)
       .order(id: :desc)
     render json: posts
@@ -51,10 +51,10 @@ class Api::V1::PostsController < ApplicationController
   private
 
   def post_params
-    params.permit(:name, :title, :excerpt, :content, :image, :created_at, :published)
+    params.permit(:slug, :title, :excerpt, :content, :image, :created_at, :published)
   end
 
   def post
-    @post ||= params[:id] ? Post.find(params[:id]) : Post.find_by_name(params[:name])
+    @post ||= params[:id] ? Post.find(params[:id]) : Post.find_by_slug(params[:slug])
   end
 end
